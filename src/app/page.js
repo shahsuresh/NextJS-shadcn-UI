@@ -1,65 +1,121 @@
-import Image from "next/image";
+"use client";
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Home,
+  Square,
+  PanelLeft,
+  Image,
+  SidebarOpen,
+  Palette,
+  Table,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
 
-export default function Home() {
+const Homepage = () => {
+  const router = useRouter();
+  const menuItems = [
+    {
+      icon: <Home className='w-8 h-8' />,
+      title: "Home",
+      description:
+        "Your central hub for navigating through all UI components and features.",
+      color: "text-blue-500",
+      link: "/",
+    },
+    {
+      icon: <Square className='w-8 h-8' />,
+      title: "Modals",
+      description:
+        "Explore various modal dialogs and popup windows for user interactions and notifications.",
+      color: "text-purple-500",
+      link: "/modals",
+    },
+    {
+      icon: <PanelLeft className='w-8 h-8' />,
+      title: "Drawer",
+      description:
+        "Side panel components that slide in from the edge of the screen for additional content.",
+      color: "text-green-500",
+      link: "/drawer",
+    },
+    {
+      icon: <Image className='w-8 h-8' />,
+      title: "Carousel",
+      description:
+        "Interactive image and content sliders with smooth transitions and navigation controls.",
+      color: "text-orange-500",
+      link: "/carousel",
+    },
+    {
+      icon: <SidebarOpen className='w-8 h-8' />,
+      title: "Side Navbar",
+      description:
+        "Collapsible sidebar navigation for improved site structure and user experience.",
+      color: "text-indigo-500",
+      link: "/side-navbar",
+    },
+    {
+      icon: <Palette className='w-8 h-8' />,
+      title: "Toggle Theme",
+      description:
+        "Switch between light and dark modes for comfortable viewing in any environment.",
+      color: "text-pink-500",
+      link: "/toggle-theme",
+    },
+    {
+      icon: <Table className='w-8 h-8' />,
+      title: "Tables",
+      description:
+        "Data tables with sorting, filtering, and pagination for organized information display.",
+      color: "text-teal-500",
+      link: "/tables",
+    },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <div className='min-h-screen bg-linear-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-8'>
+      <div className='max-w-7xl mx-auto'>
+        <div className='text-center mb-12'>
+          <h1 className='text-5xl font-bold mb-4 bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent'>
+            UI Component Library
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className='text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto'>
+            Discover a comprehensive collection of modern UI components built
+            with React and shadcn/ui
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+          {menuItems.map((item, index) => (
+            <Card
+              key={index}
+              className='hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer border-2 hover:border-[#BF9550]'
+              onClick={() => router.push(item.link)}
+            >
+              <CardHeader>
+                <div className={`${item.color} mb-3`}>{item.icon}</div>
+                <CardTitle className='text-2xl font-mono'>
+                  {item.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className='text-base leading-relaxed'>
+                  {item.description}
+                </CardDescription>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-      </main>
+      </div>
     </div>
   );
-}
+};
+
+export default Homepage;
