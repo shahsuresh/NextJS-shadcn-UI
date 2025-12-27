@@ -8,6 +8,7 @@ const Navbar = () => {
     { name: "Drawer", path: "/drawer" },
     { name: "Carousel", path: "/carousel" },
     { name: "Side Navbar", path: "/side-navbar" },
+    { name: "Notification", path: "/toast-message" },
     { name: "Toggle Theme", path: "/toggle-theme" },
     { name: "Tables", path: "/tables" },
   ];
