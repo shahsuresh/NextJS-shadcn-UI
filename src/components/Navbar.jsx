@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { ModeToggle } from "./ModeToggle";
 
 const Navbar = () => {
   const items = [
@@ -20,6 +21,7 @@ const Navbar = () => {
           <Link href={item.path}>{item.name}</Link>
         </li>
       ))}
+      <ModeToggle />
     </ul>
   );
 };
